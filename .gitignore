@@ -1,0 +1,7 @@
+.stack-work/
+dist-new/
+cs2022.cabal
+core
+*.hi
+*.o
+*~
