@@ -349,3 +349,269 @@ Ok, one module loaded.
 [?1h=>>> :q
 [?1l>Leaving GHCi.
 ]0;yuwa@yuwa: ~/cs2022[01;32myuwa@yuwa[00m:[01;34m~/cs2022[00m$ git add .
+]0;yuwa@yuwa: ~/cs2022[01;32myuwa@yuwa[00m:[01;34m~/cs2022[00m$ git commit -m "start algo"
+[main ca02d09] start algo
+ 4 files changed, 373 insertions(+), 1 deletion(-)
+ create mode 100644 ghci.log
+ create mode 100644 src/TemplateAlgo.hs
+ create mode 100644 stack.yaml.lock
+]0;yuwa@yuwa: ~/cs2022[01;32myuwa@yuwa[00m:[01;34m~/cs2022[00m$ git push
+Enumerating objects: 10, done.
+Counting objects:  10% (1/10)Counting objects:  20% (2/10)Counting objects:  30% (3/10)Counting objects:  40% (4/10)Counting objects:  50% (5/10)Counting objects:  60% (6/10)Counting objects:  70% (7/10)Counting objects:  80% (8/10)Counting objects:  90% (9/10)Counting objects: 100% (10/10)Counting objects: 100% (10/10), done.
+Delta compression using up to 16 threads
+Compressing objects:  14% (1/7)Compressing objects:  28% (2/7)Compressing objects:  42% (3/7)Compressing objects:  57% (4/7)Compressing objects:  71% (5/7)Compressing objects:  85% (6/7)Compressing objects: 100% (7/7)Compressing objects: 100% (7/7), done.
+Writing objects:  14% (1/7)Writing objects:  28% (2/7)Writing objects:  42% (3/7)Writing objects:  57% (4/7)Writing objects:  71% (5/7)Writing objects:  85% (6/7)Writing objects: 100% (7/7)Writing objects: 100% (7/7), 7.85 KiB | 893.00 KiB/s, done.
+Total 7 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas:   0% (0/1)[Kremote: Resolving deltas: 100% (1/1)[Kremote: Resolving deltas: 100% (1/1), completed with 1 local object.[K
+To github.com:yuwa-taguchi/cs2022
+   8c0117f..ca02d09  main -> main
+]0;yuwa@yuwa: ~/cs2022[01;32myuwa@yuwa[00m:[01;34m~/cs2022[00m$ Script started on 2022-09-26 11:31:06+09:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="154" LINES="22"]
+]0;yuwa@yuwa: ~/cs2022[01;32myuwa@yuwa[00m:[01;34m~/cs2022[00m$ cat `which lghci`
+#!/bin/bash
+ginput | tee -a -i ghci.log | stack exec -- ghci 2>&1 | tee -a -i ghci.log
+]0;yuwa@yuwa: ~/cs2022[01;32myuwa@yuwa[00m:[01;34m~/cs2022[00m$ code ~/.local/bin
+]0;yuwa@yuwa: ~/cs2022[01;32myuwa@yuwa[00m:[01;34m~/cs2022[00m$ lghci src/TemplateAlgo.hs
+GHCi, version 8.10.7: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/yuwa/cs2022/.ghci
+[1 of 1] Compiling TemplateAlgo     ( src/TemplateAlgo.hs, interpreted )
+Ok, one module loaded.
+2022-09-26 11:41:17.635940575
+[?1h=>>> words "This is a pen"[K."
+[?1l>["This","is","a","pen."]
+2022-09-26 11:43:25.29098816
+[?1h=>>> main[K[K[K[K:r
+[?1l>   1  module TemplateAlgo where
+   2  
+   3  main :: IO ()
+   4  main = interact func
+   5  
+   6  func :: String -> String
+   7  func input = case map (map readInt . words) (lines input) of
+   8      _ -> undefined
+   9  
+  10  readInt :: String -> Int
+  11  readInt = read
+Ok, one module loaded.
+2022-09-26 12:06:46.520919456
+[?1h=>>> :l app/Main.hs
+[?1l>   1    module Main where
+   2    
+   3    main :: IO ()
+   4    main = interact func
+   5    
+   6    func :: String -> String
+   7    func input = unlines (map show [1 .. 3])
+   8    
+   9    showInt :: Int -> String
+  10    showInt = show
+[1 of 1] Compiling Main             ( app/Main.hs, interpreted )
+Ok, one module loaded.
+2022-09-26 12:07:47.270337385
+[?1h=>>> main
+[?1l>1
+2
+3
+2022-09-26 12:09:34.246120253
+[?1h=>>> 
+[?1l><stdin>: hGetChar: illegal operation (handle is semi-closed)
+]0;yuwa@yuwa: ~/cs2022[01;32myuwa@yuwa[00m:[01;34m~/cs2022[00m$ Script started on 2022-10-03 11:03:05+09:00 [TERM="xterm-256color" TTY="/dev/pts/3" COLUMNS="154" LINES="22"]
+]0;yuwa@yuwa: ~/cs2022[01;32myuwa@yuwa[00m:[01;34m~/cs2022[00m$ l[Kcat `[K@[K`which lghci`
+#!/bin/bash
+
+stack exec -- ghci $1
+]0;yuwa@yuwa: ~/cs2022[01;32myuwa@yuwa[00m:[01;34m~/cs2022[00m$ lghci app/Main.hs
+GHCi, version 8.10.7: https://www.haskell.org/ghc/  :? for help
+Loaded GHCi configuration from /home/yuwa/cs2022/.ghci
+[1 of 1] Compiling Main             ( app/Main.hs, interpreted )
+Ok, one module loaded.
+2022-10-03 11:08:02.307793658
+[?1h=>>> 27182 `mod` 818
+[?1l>188
+2022-10-03 11:13:45.028618482
+[?1h=>>> :r
+[?1l>   1  module Main where
+   2  
+   3  showInt :: Int -> String
+   4  showInt = show
+   5  
+   6  readInt :: String -> Int
+   7  readInt = read
+   8  
+   9  main :: IO ()
+  10  main = interact func
+  11  
+  12  -- func :: String -> String
+  13  -- func input = unlines (map showInt [1 .. 3])
+  14  
+  15  func :: String -> String
+  16  func input = 27182 `mod` 818
+[1 of 1] Compiling Main             ( app/Main.hs, interpreted )
+
+[;1mapp/Main.hs:16:14: [;1m[31merror:[0m[0m[;1m[0m[0m[;1m
+    • No instance for (Num String) arising from the literal ‘27182’
+    • In the first argument of ‘mod’, namely ‘27182’
+      In the expression: 27182 `mod` 818
+      In an equation for ‘func’: func input = 27182 `mod` 818[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m16 |[0m[0m func input = [;1m[31m27182[0m[0m `mod` 818
+[;1m[34m   |[0m[0m[;1m[31m              ^^^^^[0m[0m
+[0m[0m[0m
+[;1mapp/Main.hs:16:14: [;1m[31merror:[0m[0m[;1m[0m[0m[;1m
+    • No instance for (Integral String) arising from a use of ‘mod’
+    • In the expression: 27182 `mod` 818
+      In an equation for ‘func’: func input = 27182 `mod` 818[0m[0m
+[;1m[34m   |[0m[0m
+[;1m[34m16 |[0m[0m func input = [;1m[31m27182 `mod` 818[0m[0m
+[;1m[34m   |[0m[0m[;1m[31m              ^^^^^^^^^^^^^^^[0m[0m
+[0m[0m[0mFailed, no modules loaded.
+2022-10-03 11:15:01.150641681
+[?1h=>>> :r
+[?1l>   1  module Main where
+   2  
+   3  showInt :: Int -> String
+   4  showInt = show
+   5  
+   6  readInt :: String -> Int
+   7  readInt = read
+   8  
+   9  main :: IO ()
+  10  main = interact func
+  11  
+  12  -- func :: String -> String
+  13  -- func input = unlines (map showInt [1 .. 3])
+  14  
+  15  func :: String -> String
+  16  func input = showInt (27182 `mod` 818)
+[1 of 1] Compiling Main             ( app/Main.hs, interpreted )
+Ok, one module loaded.
+2022-10-03 11:18:34.885931366
+[?1h=>>> :r
+[?1l>   1  module Main where
+   2  
+   3  showInt :: Int -> String
+   4  showInt = show
+   5  
+   6  readInt :: String -> Int
+   7  readInt = read
+   8  
+   9  main :: IO ()
+  10  main = interact func
+  11  
+  12  -- func :: String -> String
+  13  -- func input = unlines (map showInt [1 .. 3])
+  14  
+  15  -- func :: String -> String
+  16  -- func input = showInt (27182 `mod` 818)
+  17  
+  18  -- func :: String -> String
+  19  -- func input =showInt (314 * (159 + 265) - 358)
+  20  
+  21  func :: String -> String
+  22  func input = showInt (24 * 60 * 60)
+[1 of 1] Compiling Main             ( app/Main.hs, interpreted )
+Ok, one module loaded.
+2022-10-03 11:32:35.36221293
+[?1h=>>> :r
+[?1l>   1  module Main where
+   2  
+   3  showInt :: Int -> String
+   4  showInt = show
+   5  
+   6  readInt :: String -> Int
+   7  readInt = read
+   8  
+   9  main :: IO ()
+  10  main = interact func
+  11  
+  12  func :: String -> String
+  13  
+  14  -- func :: String -> String
+  15  -- func input = unlines (map showInt [1 .. 3])
+  16  
+  17  -- func :: String -> String
+  18  -- func input = showInt (27182 `mod` 818)
+  19  
+  20  -- func :: String -> String
+  21  -- func input =showInt (314 * (159 + 265) - 358)
+  22  
+  23  -- func :: String -> String
+  24  -- func input = showInt (24 * 60 * 60)
+  25  
+  26  func input = case readInt input of
+  27      n -> showInt (2 * n)
+[1 of 1] Compiling Main             ( app/Main.hs, interpreted )
+Ok, one module loaded.
+2022-10-03 11:46:13.874155136
+[?1h=>>> :r
+[?1l>   1  module Main where
+   2  
+   3  showInt :: Int -> String
+   4  showInt = show
+   5  
+   6  readInt :: String -> Int
+   7  readInt = read
+   8  
+   9  main :: IO ()
+  10  main = interact func
+  11  
+  12  func :: String -> String
+  13  
+  14  -- func :: String -> String
+  15  -- func input = unlines (map showInt [1 .. 3])
+  16  
+  17  -- func :: String -> String
+  18  -- func input = showInt (27182 `mod` 818)
+  19  
+  20  -- func :: String -> String
+  21  -- func input =showInt (314 * (159 + 265) - 358)
+  22  
+  23  -- func :: String -> String
+  24  -- func input = showInt (24 * 60 * 60)
+  25  
+  26  -- func input = case readInt input of
+  27  --     n -> showInt (2 * n)
+  28  
+  29  func input = case readInt input of
+  30      n -> showInt (n `mod` 5)
+[1 of 1] Compiling Main             ( app/Main.hs, interpreted )
+Ok, one module loaded.
+2022-10-03 11:49:33.839252475
+[?1h=>>> :r[K[K:r
+[?1l>   1  module Main where
+   2  
+   3  showInt :: Int -> String
+   4  showInt = show
+   5  
+   6  readInt :: String -> Int
+   7  readInt = read
+   8  
+   9  main :: IO ()
+  10  main = interact func
+  11  
+  12  func :: String -> String
+  13  
+  14  -- func :: String -> String
+  15  -- func input = unlines (map showInt [1 .. 3])
+  16  
+  17  -- func :: String -> String
+  18  -- func input = showInt (27182 `mod` 818)
+  19  
+  20  -- func :: String -> String
+  21  -- func input =showInt (314 * (159 + 265) - 358)
+  22  
+  23  -- func :: String -> String
+  24  -- func input = showInt (24 * 60 * 60)
+  25  
+  26  -- func input = case readInt input of
+  27  --     n -> showInt (2 * n)
+  28  
+  29  -- func input = case readInt input of
+  30  --     n -> showInt (n `mod` 5)
+  31  
+  32  func input =unlines [concat (replicate 3 input)]
+[1 of 1] Compiling Main             ( app/Main.hs, interpreted )
+Ok, one module loaded.
+2022-10-03 12:00:19.108303083
+[?1h=>>> git push[K[K[K[K[K[K[K[K:q
+[?1l>Leaving GHCi.
+]0;yuwa@yuwa: ~/cs2022[01;32myuwa@yuwa[00m:[01;34m~/cs2022[00m$ git add .
